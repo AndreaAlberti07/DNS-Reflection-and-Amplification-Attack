@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -70,10 +70,5 @@ Jared Mathews, Prosenjit Chatterjee, Shankar Banik, and Cory Nance.
 \newblock \doi{10.1145/3535782.3535838}.
 \newblock URL \url{http://arxiv.org/abs/2206.14346}.
 \newblock arXiv:2206.14346 [cs].
-
-\bibitem[Jin and Wang(2003)]{hopcount}
-Cheng Jin and Haining Wang.
-\newblock Hop-count filtering: an effective defense against spoofed ddos
-  traffic, 01 2003.
 
 \end{thebibliography}
