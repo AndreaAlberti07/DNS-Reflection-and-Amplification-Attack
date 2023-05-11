@@ -15,7 +15,7 @@ in this server they are not set up, in order to ease the msdos attack.
 ## File /etc/bind/named.conf.local
 
 This file is typically used to define local DNS zones for a private domain. We will update this file to include our forward and reverse DNS zones.  
-During the test it is configured using dummy NS.
+During the test it is configured using private NS.
 
 ```bash
 zone "ediproject.com" {
@@ -31,7 +31,7 @@ zone "128.10.in-addr.arpa" {
 
 ## File /etc/bind/zones/db.ediproject.com
 
-It contains all informations about the domain name, including Name servers, cname, ttl ...
+It contains all informations about the domain name, including all resource records ...
 
 ```bash
   GNU nano 6.2                                                                             /etc/bind/zones/db.ediproject.com
