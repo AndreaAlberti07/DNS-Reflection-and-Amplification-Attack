@@ -1,0 +1,37 @@
+\section{DNS based DDoS attacks}
+The DNS service is a critical part of the Internet infrastructure. Almost every communication exploits the DNS service, and attacking
+it could lead a significant number of networked applications to run out of service. The DNS service has been designed to provide fast 
+responses and is less oriented towards security, which makes it vulnerable to different types of attacks. According to a recent Cloudflare's
+report \cite{DDoSthreatreport} the most used vector in DDoS is the DNS. The types of attacks involving DNS are of three main types: 
+\textit{DNS query flood}, \textit{TCP flood}, \textit{DNS reflection and amplification}, and \textit{DNS water torture}.\\
+\\
+\textbf{DNS query flood}\\
+This is a direct attack aimed at consuming the server resources until run it out of service. The attacker sends a large number of DNS queries
+to the target recursive DNS server, leveraging a zombie devices army (botnet). The requests are structured in a way that the server has not the
+record cached and it is forced to perform recursive queries to provide the responses. It is easier to perform this type of attack on smaller 
+DNS servers that may have limited resources to handle a large number of queries.\\
+\\
+\textbf{TCP flood}\\
+This is another type of attack aimed at consuming the server resources. These latter are consumed by the attacker sending lots of TCP 
+connection requests without closing them. The server is forced to allocate resources to handle the TCP connections and, when the 
+numbers get larger it may run out of resources.\\
+\\
+\textbf{DNS water torture}\\
+This is a type of indirect attack aimed at consuming the resources of a target authoritative DNS server. The attacker sends a huge number
+of queries about properly constructed hostnames. These are made up by two parts: the domain whose authoritative server is the target, and
+a random string such that the FQDN cannot exist. That way the recursive NS starts its search until it reaches the authoritative server. This latter
+notices the non-existence of the FQDN and sends NXDOMAIN response. All the queries travel until the authoritative server, which is forced to
+handle all of them until it is overwhelmed.\\
+\\
+\textbf{DNS reflection and amplification}\\
+This is an indirect attack aimed at consuming the target network bandwidth. It start with the spoofing of the target's IP address, then lots 
+of queries are sent to the DNS server using as the source address the spoofed IP address. This latter will receives the responses from the 
+DNS server (reflection). The queries are structured in a way that the responses are larger in size (amplification). That way the target's
+bandwidth is fulfilled, with the attacker having used just a small quantity of its resources. The effectiveness of this attack is given by 
+the amplification factor (AF), measured as the ratio between the size of the response and the size of the query. An easy but effective choice
+for the attacker is to perform a type ANY which provides a large AF.\\
+\\
+Since according to the already cited report \cite{DDoSthreatreport} the most common type of attack is the DNS reflection and amplification,
+in this project we focus on this type of attack.
+
+

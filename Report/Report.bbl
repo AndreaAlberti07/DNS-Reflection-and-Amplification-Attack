@@ -1,0 +1,79 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Dizdar(2021)]{dizdar_dns_2021}
+Admir Dizdar.
+\newblock {DNS} {Amplification} {Attack}: {How} they {Work}, {Detection} and
+  {Mitigation}, October 2021.
+\newblock URL \url{https://brightsec.com/blog/dns-amplification-attack/}.
+
+\bibitem[Fang et~al.(2021)Fang, Wu, Qian, Wang, and Han]{dnsbaseddos}
+Lei Fang, Hongbin Wu, Kexiang Qian, Wenhui Wang, and Longxi Han.
+\newblock A comprehensive analysis of ddos attacks based on dns.
+\newblock \emph{Journal of Physics: Conference Series}, 2024:\penalty0 012027,
+  09 2021.
+\newblock \doi{10.1088/1742-6596/2024/1/012027}.
+
+\bibitem[Wei-min et~al.(2010)Wei-min, Lu-ying, and
+  Zhen-ming]{alleviatingimpact}
+Li~Wei-min, Chen Lu-ying, and Lei Zhen-ming.
+\newblock Alleviating the impact of dns ddos attacks.
+\newblock \emph{2010 Second International Conference on Networks Security,
+  Wireless Communications and Trusted Computing}, 1:\penalty0 240--243, 2010.
+\newblock \doi{10.1109/NSWCTC.2010.63}.
+
+\bibitem[Taylor(2021)]{taylor_four_2021}
+Rebekah Taylor.
+\newblock Four major {DNS} attack types and how to mitigate them, August 2021.
+\newblock URL
+  \url{https://bluecatnetworks.com/blog/four-major-dns-attack-types-and-how-to-mitigate-them/}.
+
+\bibitem[Dizdar(2022)]{DNSattackstype}
+Admir Dizdar.
+\newblock 5 dns attack types and how to prevent them, May 2022.
+\newblock URL \url{https://brightsec.com/blog/dns-attack/}.
+
+\bibitem[Yoachimik(2023)]{DDoSthreatreport}
+Pacheco Yoachimik.
+\newblock Ddos threat report for 2023 q1\_2023, Apr 2023.
+\newblock URL \url{http://blog.cloudflare.com/ddos-threat-report-2023-q1/}.
+
+\bibitem[Devi(2015)]{Devi_2015}
+G.~Usha Devi.
+\newblock Detection of ddos attack using optimized hop count filtering
+  technique.
+\newblock \emph{Indian Journal of Science and Technology}, 8\penalty0
+  (1):\penalty0 1–6, Jan 2015.
+\newblock ISSN 09746846, 09745645.
+\newblock \doi{10.17485/ijst/2015/v8i26/83981}.
+
+\bibitem[de~Vries et~al.(2016)de~Vries, Schmidt, and Pras]{anycast}
+Wouter de~Vries, Ricardo Schmidt, and Aiko Pras.
+\newblock Anycast and its potential for ddos mitigation.
+\newblock \emph{ResearchGate}, Jun 2016.
+\newblock \doi{10.1007/978-3-319-39814-3_16}.
+
+\bibitem[Meitei et~al.(2016)Meitei, kh, and De]{machinelearning}
+Irom Meitei, Johnson kh, and Tanmay De.
+\newblock Detection of ddos dns amplification attack using classification
+  algorithm, 08 2016.
+
+\bibitem[Mathews et~al.(2022)Mathews, Chatterjee, Banik, and Nance]{createDNS}
+Jared Mathews, Prosenjit Chatterjee, Shankar Banik, and Cory Nance.
+\newblock A deep learning approach to create dns amplification attacks.
+\newblock In \emph{2022 4th International Conference on Management Science and
+  Industrial Engineering (MSIE)}, page 429–435, Apr 2022.
+\newblock \doi{10.1145/3535782.3535838}.
+\newblock URL \url{http://arxiv.org/abs/2206.14346}.
+\newblock arXiv:2206.14346 [cs].
+
+\bibitem[Jin and Wang(2003)]{hopcount}
+Cheng Jin and Haining Wang.
+\newblock Hop-count filtering: an effective defense against spoofed ddos
+  traffic, 01 2003.
+
+\end{thebibliography}
