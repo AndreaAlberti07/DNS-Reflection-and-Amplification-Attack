@@ -1,4 +1,4 @@
-# This notes contains the configuration of the DNS
+# DNS server configuration
 
 ## Modules required:
 
