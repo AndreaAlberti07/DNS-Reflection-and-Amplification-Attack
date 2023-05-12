@@ -18,6 +18,7 @@ This file is typically used to define local DNS zones for a private domain. We w
 During the test it is configured using private NS.
 
 ```bash
+ GNU nano 6.2                                                                                 /etc/bind/named.conf.local
 zone "ediproject.com" {
     type primary;
     file "/etc/bind/zones/db.ediproject.com"; # zone file path
@@ -34,7 +35,8 @@ zone "128.10.in-addr.arpa" {
 It contains all informations about the domain name, including all resource records ...
 
 ```bash
-  GNU nano 6.2                                                                             /etc/bind/zones/db.ediproject.com
+  GNU nano 6.2       /etc/bind/zones/db.ediproject.com
+
 $TTL    604800
 @       IN      SOA     ns1.ediproject.com. admin.ediproject.com. (
                   3     ; Serial
@@ -44,18 +46,26 @@ $TTL    604800
              604800 )   ; Negative Cache TTL
 ;
 ; name servers - NS records
-     IN      NS      davide.ediproject.com.
-     IN      NS      cristian.ediproject.com.
-     IN      NS      matteo.ediproject.com.
-     IN      NS      andrea.ediproject.com.
-     IN      NS      karim.ediproject.com.
-; name servers - A records
+@     IN      NS      davide.ediproject.com.
+@     IN      NS      cristian.ediproject.com.
+@     IN      NS      matteo.ediproject.com.
+@     IN      NS      andrea.ediproject.com.
+@     IN      NS      karim.ediproject.com.
+
+
 ns1.ediproject.com.          IN      A       10.128.10.11
 davide.ediproject.com.       IN      A       10.128.10.13
 karim.ediproject.com.        IN      A       10.128.10.12
 andrea.ediproject.com.       IN      A       10.128.10.14
 matteo.ediproject.com.       IN      A       10.128.10.15
 cristian.ediproject.com.     IN      A       10.128.10.16
+ediproject.com.              IN      A       10.128.10.17
+ediproject.com.              IN      A       10.128.10.18
+
+
+
+
+
 ```
 
 ## File /etc/bind/zones/db.10.128
