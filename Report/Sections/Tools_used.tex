@@ -1,0 +1,35 @@
+\section{Tools used}
+\textbf{Ping} \\
+Ping is a network utility tool used to test the connectivity between two networked devices.
+It sends a small packet of data to a specific IP address or hostname and measures the time it takes for that packet to be received and returned.
+The result shows the round trip time (RTT), as well as the number of packets sent and received, and any packet loss that may have occurred.\\
+While it is a useful tool for testing network connectivity, it has some limitations,
+it uses the ICMP protocol to send and receive packets, which may not always be allowed by network firewalls or routers, and it does not support different protocols like TCP or UDP.
+This means that if a network is configured to block ICMP traffic, the ping command may not work.
+Moreover ping provides only basic information about network connectivity, it does not provide information about bandwidth or the structure of the network.\\
+\\
+\textbf{Dig} \\
+The dig command (short for "domain information groper") is a popular network administration tool used to perform DNS queries.
+It allows users to perform DNS lookups to check DNS records and obtain information about DNS configurations.
+It is a versatile tool that allows users to specify different query types, such as A, AAAA, MX, TXT, and others.
+It can also be used to perform reverse DNS queries, where an IP address is used to retrieve the corresponding domain name.
+In addition to provide detailed DNS query results, the dig command can also be used to troubleshoot DNS issues, such as misconfigured DNS servers,
+slow DNS resolution times, or DNS cache issues.\\
+\\
+\textbf{Top} \\
+The top command provides real-time monitoring of system resources, such as CPU usage, memory utilization, running processes, and more.
+When executed, the top command displays an interactive, dynamic table that continually updates, allowing users to view
+the current state of their system and identify any processes consuming excessive resources.
+The table is typically sorted by CPU usage by default, but users can customize the sorting order based on their preferences.
+The top command also provides options to manipulate the displayed information and perform actions on running processes,
+such as terminating or changing their priority.\\
+\\
+\textbf{Wireshark}\\
+Wireshark is a open-source network protocol analyzer.
+It is designed to capture, analyze, and display network traffic in real-time.
+Wireshark allows users to inspect and interpret the data packets transmitted over a network, providing detailed information
+about the communication between different devices.\\
+In addition to passive packet capturing, Wireshark offers powerful filtering and search capabilities,
+allowing users to focus on specific types of traffic or specific packets of interest.
+It also provides features for advanced analysis, such as the ability to reconstruct and view streams of data,
+perform statistical analysis, and even export captured data for further investigation or reporting
