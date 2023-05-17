@@ -126,7 +126,7 @@
 \preto{\abstract}{%
   \setlength{\parindent}{\z@}%
   \newcommand{\keywords}[1]{%
-    \emph{\textbf{\@keywordsname :} }#1\par
+    \emph{\textbf{\@keywordsname ---} }#1\par
   }
   {\textcolor{PANDarkBlue}{\rule{\textwidth}{1.5\p@}}}\\%
 }
