@@ -140,8 +140,8 @@
   {\raisebox{\baselineskip}{\textcolor{PANDarkBlue}{\rule{\textwidth}{1\p@}}}}%
 }
 
-\titleformat{\section}{\large\bfseries}{\hspace*{1em}\makebox[\z@][r]{\thesection}}{1em}{}
-\titleformat{\subsection}{\large}{\hspace*{1em}\makebox[\z@][r]{\thesubsection}}{1em}{}
+\titleformat{\section}{\Large\bfseries}{\hspace*{1em}\makebox[\z@][r]{\thesection}}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\hspace*{1em}\makebox[\z@][r]{\thesubsection}}{1em}{}
 \titlespacing*{\section}{\z@}{\baselineskip}{\z@}
 \titlespacing*{\subsection}{\z@}{\baselineskip}{\z@}
 \titlespacing*{\subsubsection}{\z@}{\baselineskip}{\z@}
