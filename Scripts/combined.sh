@@ -36,16 +36,10 @@ do
 
     # Optional: Store the query times in a file for further analysis
     echo "$timestamp; Query_time: $query_time; CPU: $cpu_usage%; Memory: $memory_usage; Ping: $rtt_time"
-    echo "$timestamp; Query_time: $query_time; CPU: $cpu_usage%; Memory: $memory_usage; Ping: $rtt_time" >> DDoS_query_times.txt
+    echo "$timestamp; Query_time: $query_time; CPU: $cpu_usage%; Memory: $memory_usage; Ping: $rtt_time" >> DDoS_50000_ANY_dnsperf.txt
  
     # Delay before the next measurement
     sleep $delay
-
-
-
-    
-
-
   
 done
 
