@@ -1,25 +1,19 @@
 import argparse
-import binascii
-import multiprocessing
-import sys
 import threading
-import socket
 
 import dns.message
 import dns.rdatatype
 from scapy.layers.inet import UDP, IP
-from scapy.sendrecv import send, sendpfast
+from scapy.sendrecv import send
 
 
 def send_dns_query(domain_name, dns_server="224.0.0.251", dns_port=53, rr_type='A', flags=0x0100, spoofed_ip=None):
     # Create a DNS query message
     message = create_dns_query(domain_name, rr_type, flags)
 
-    # dns_query = IP(dst=dns_server) / UDP(sport=54321, dport=53) / DNS(rd=1, qd=DNSQR(qname=target))
-    # packet = IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire()
     packet = IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire()
     while(args.nrequest):
-        sendpfast(packet)
+        send(packet)
         args.nrequest -= 1
 
 
