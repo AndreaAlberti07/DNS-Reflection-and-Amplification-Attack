@@ -7,52 +7,54 @@ those that aim to minimize the impact of an attack by detecting it early and enh
 \textbf{Rate limiting}\\
 Rate limiting is a measure that can be used to mitigate the impact of DNS amplification attacks. The idea behind rate limiting is to limit 
 the number of responses that a DNS server can send to a specific IP address within a certain time period. That way the queries sent
-by the attacker are dropped by the DNS server, thus reducing the amplification effect.\\
+by the attacker are dropped by the DNS server, therefore reducing the amplification effect.\\
 \\
 \textbf{Trusted sources}\\
-When a DNS recursive server is open on the Internet, it can receive queries from any source. The range of IP addresses that can 
-be spoofed is very large and it is not possible to block all of them. However, it is possible to limit the number of sources that can
-send queries to the DNS server, creating a whitelist of trusted sources. This measure reduce the probability of an attack occurring, however,
-the trusted sources could be spoofed, thus the attack be performed.\\
+When a DNS recursive server is publicly accessible on the Internet, it becomes susceptible to receiving queries from any source. 
+The potential range of IP addresses that can be spoofed is vast, making it impractical to block all of them effectively. However, a 
+possible mitigation strategy is to restrict the number of sources allowed to send queries to the DNS server by implementing a whitelist of trusted 
+sources. By creating such a whitelist, the probability of an attack occurring can be reduced. It is worth nothing to underline that 
+the introduction of a whitelist is a not a foolproof method, since IP in whitelist can still be spoofed and used to perform the attack.\\
 \\
 \textbf{Firewall}\\
 A firewall is a network security system that monitors and controls the incoming and outgoing network traffic based on predetermined security
 rules. Setting up a proper firewall both DNS server side and victim side can block unauthorized traffic and reduce the impact of the attack.
 
 \subsection{Detection measures}
-The DNS amplification attack has as core activity the IP spoofing. A mechanism able to discriminate between a original source IP address
-and a spoofed could detect the attack. This is the main idea behind the \textit{detection} techniques.\\
+The DNS amplification attack relies heavily on IP spoofing as a central activity. The key concept behind \textit{detection} techniques is the ability 
+to differentiate between an original source IP address and a spoofed one, therefore immediately identify and mitigate the attack. \\
 \\
 \textbf{Routing hops detection}\\
-This mechanism was proposed by \citeauthor{hopcount} in this paper \cite{hopcount}. The idea is to exploit the inconsistency between the
+This mechanism was proposed in the paper by '\cite{hopcount}'. The idea is to exploit the inconsistency between the
 number of hops of a spoofed IP packet and the spoofed IP address itself. The hops number is inferred by the TTL value in the IP header.
 This mechanism can detect almost 90\% of the spoofed packets.\\
 \\
 \textbf{Machine Learning}\\
 In the last decade with the developing of machine learning, some algorithms have been proposed to detect the DNS amplification attack.
-In 2015 \citeauthor{machinelearning} \cite{machinelearning} proposed a machine learning based approach to detect the attacks, using 
-\textit{Random Forest}, \textit{MLP} and \textit{SVM} algorithms. However, a more recent publication \cite{createDNS} by 
-\citeauthor{createDNS}, shows that using an adversarial neural network approach (EAD) it is possible to easy circumvent the detection. 
+In the paper by '\cite{machinelearning}', is proposed a machine learning based approach to detect the attacks, using 
+\textit{Random Forest}, \textit{MLP} and \textit{SVM} algorithms. However, a more recent publication by 
+'\cite{createDNS}', shows that using an adversarial neural network approach (EAD) it is possible to easy circumvent the detection. 
 The idea is to train a network to slightly modify the input data (DNS queries) in order to fool the detection algorithm.
 
 \subsection{Resilience measures}
-These measures are more focused on making the DNS more robust to the attack, allowing it to continue to provide the service 
-even during the attack.\\
+Resilience measures aim to enhance the DNS's ability to withstand attacks and maintain its service even when under attack.\\
 \\
 \textbf{Anycast scheme}\\
-The DDoS attack is aimed at causing a service outage on a victim server by flooding it with a large number of packets. The idea behind the 
-anycast solution is to have many replicas of the victim server with same logical IP address, and to choose the destination of the packets
-according to some routing criteria. That way, the packets are distributed among the replicas, thus reducing the load on each of them.
-In 2015, a large-scale DDoS attack was launched against the DNS root name servers, resulting in denial of service for some of them, as reported by 
-\cite{anycast}. The attack demonstrated that although the use of anycast schema can increase the resilience of DNS servers, it cannot entirely 
-protect against DDoS attacks. However, due to the deployment of anycast technology in 11 out of 13 root servers, the impact of the attack was 
-limited and partially mitigated.\\
+A DDoS attack aims to disrupt a victim server's service by overwhelming it with a high volume of packets. A solution to this issue involves 
+creating multiple replicas of the victim server, all sharing the same logical IP address. The destination of 
+incoming packets is determined by the Anycast protocol employing certain routing criteria. Thereby, the load is distributed among the replicas 
+and the strain on each individual server is reduced.
+In 2015, a significant DDoS attack targeted the DNS root name servers, resulting in a denial of service for some of them, as documented in the report '\cite{anycast}'. 
+This attack highlighted that although anycast architecture can enhance the resilience of DNS servers, it is not foolproof solution to DDoS attacks. 
+Nevertheless, due to the implementation of anycast technology in 11 out of the 13 root servers, the impact of the attack was limited and partially mitigated.\\
 \\
 \textbf{Caching behavior}\\
-This approach is discussed by \citeauthor{alleviatingimpact} in this paper \cite{alleviatingimpact}. They support that a relatively 
-simple change in the caching behavior of a DNS server can significantly improve the DNS performance under a DDoS attack.
-They propose a DNS server should not evict the cache entries when it detects the relevant DNS servers are unavailable and delete
-them as soon as this latter become available again. That way, even during an attack running out of service a relevant server, the 
-DNS recursive server can still serve the cached entries, thus providing part of the requested domain names.\\
+The paper authored by '\cite{alleviatingimpact}' explores an approach to mitigate the impact of DDoS attacks on DNS performance. 
+The authors argue that a relatively simple modification to the caching behavior of a DNS server can yield significant 
+improvements in performance during such attacks.
+Their proposal suggests that a DNS server should refrain from evicting cache entries when it detects unavailability of the relevant DNS servers. 
+Instead, these entries should be retained until the corresponding servers become available again. By implementing this change, even if a relevant 
+server is rendered inaccessible during a DDoS attack, the DNS recursive server can still serve the cached entries, thereby providing responses for 
+a portion of the requested domain names.
 
 
