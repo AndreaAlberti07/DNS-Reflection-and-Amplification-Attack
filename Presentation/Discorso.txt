@@ -58,11 +58,13 @@ The last type of attack is the DNS reflection and amplification.
 
 The goal of this attack is to exhaust the target network bandwidth by exploiting the concepts of reflection and amplification.
 
-It starts with the spoofing of the IP address of a victim by the attacker. Then the attacker sends lots of queries to a misconfigured DNS recursive server that will consequently respond to the victim IP.
+It starts with the spoofing of the IP address of a victim by the attacker. Then the attacker sends lots of queries to a misconfigured DNS recursive 
+server that will consequently respond to the victim IP.
 
 So we have a kind of reflection on the name server.
 
-The amplification affect is obtained since usually the types of queries performed are of type ANY, therefore the response size is larger than the query, leading to an amplification effect.
+The amplification affect is obtained since usually the types of queries performed are of type ANY, therefore the response size is larger than the query, 
+leading to an amplification effect.
 
 The higher the amplification factor, the higher the impact of this attack.
 
@@ -71,8 +73,64 @@ According to the already cited report, DNS reflection is the most commonly used 
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
+
+ANDREA (SLIDES 10 TO 13) --> ESTIMATE: 5-6 MINUTES
+
+SLIDE 10
+The DNS is vital for the internet, so protecting it from DDoS and any other type of attack is crucial.
+
+To achieve this many mitigation measures have been deployed across the years and we are gonna see some of them in this section.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 11
+They can be roughly classified in two categories.
+
+Proactive measures that tries to prevent and avoid the attack.
+
+Reactive measures aimed at identifying and stop as soon as possible the attack, while increasing the system resilience as well.
+
+Read the measures.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 12
+The idea behind the rate limiting is to limit the number of response a server can provide to a given IP. That way the server can stop providing answer 
+to the spoofed IP and the reflection effect is mitigated.
+
+As regard the trusted sources the idea is to create a whitelist of IP that are legitimated to send queries to the DNS server. 
+Thereby, the number of IP that can be spoofed to perform attack is reduced and consequently the probability of an attack.
+However there is still the risk of the trusted IP to be spoofed, so it is not a foolproof measure.
+
+Lastly it is possible to set firewall to control and filter traffic to block the queries and prevent the attack.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 13
+Here are some reactive measures.
+
+The first is the anycast scheme. The idea here is to create replicas of the server all with the same logical IP and use the anycast scheme to choose at 
+any time the best server according to some criteria (like availability and traffic).
+Thereby, the attacker would have to run out of service all the server which becomes more difficult the higher the number of servers.
+
+With machine learning the idea is to train some classification algorithms like SVM, NN and trees (random forests) to discriminate between an attack situation and a 
+legitimate one, according to some features extracted from the queries.
+However has been recently shown that using an adversarial approach the classification algorithm can be fooled. 
+This approach consists in taking a two network, the classifier and another challenging it. This network can learn to slightly change the features to fool the classifier.
+
+The idea of caching behavior is to keep providing the cached entry when a relevant server is down, independently on the TTL. That way even during an attack the cached 
+entries can be served, increasing the resilience of the system.
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
