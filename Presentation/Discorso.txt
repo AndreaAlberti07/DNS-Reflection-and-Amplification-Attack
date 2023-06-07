@@ -1,0 +1,79 @@
+ANDREA (SLIDES 3 TO 9) --> ESTIMATE: 6-7 MINUTES
+
+SLIDE 3
+As you have seen from the first slide, our project is about the implementation of a DDoS attack, specifically a DNS reflection and amplification attack.
+
+The choice was not made at random, instead it was the result of a selection and research process.
+
+In the next slides i'm gonna introduce you to the reasons behind our choice and we are gonna see briefly some kinds of DDoS attacks.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 4
+We started from the intention of simulating a DDoS attack, however as you can see from the figure, there many different ways in which this type of attack can be performed. 
+
+Our goal was that of experimenting something commonly used in real word situations and not just in sporadic cases.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 5
+We discovered that according to a recent report by cloudflare, published in the first quarter of 2023, almost 1/3 of all the DDoS attacks are DNS based.
+
+However also inside the sub-category of the dns-based attack there are several possibilities and here are listed the three most important.
+
+DNS query flood, TCP flood and DNS reflection and amplification.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 6
+The DNS query flood is aimed at exhausting the target resources, by sending a huge amount of DNS queries.
+
+The key point is sending lots of queries and this is achieved by the attackers using a botnet. A botnet is an army of compromised devices controlled by the attacker to send DNS queries.
+
+This attack can mainly have two target, a recursive NS or an authoritative one. 
+
+In the case the target is the first one, there is a trick played by the attacker, that consists in crafting the queries in a such a way that they are not already cached in the server. 
+That way the server is forced to query other NS until, eventually it gets the response and sends it back to the client.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 7
+If the target is a specific authoritative NS, the attack takes the name of water torture.
+
+The goal is the same as before, but on this case the trick played is that of crafting queries taking the domain of the target and adding a random string.
+
+That way, we are sure the queries reach the target using its resources to answer to them NXDOMAIN.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 8
+TCP flood attack has still the goal of exhausting the target resources but instead of using UDP traffic it exploits the THREE-WAY handshaking of TCP.
+
+The trick is to open a large number of TCP connections without closing them, therefore forcing the target to use its resources to handle it, until they are exhausted.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SLIDE 9
+The last type of attack is the DNS reflection and amplification.
+
+The goal of this attack is to exhaust the target network bandwidth by exploiting the concepts of reflection and amplification.
+
+It starts with the spoofing of the IP address of a victim by the attacker. Then the attacker sends lots of queries to a misconfigured DNS recursive server that will consequently respond to the victim IP.
+
+So we have a kind of reflection on the name server.
+
+The amplification affect is obtained since usually the types of queries performed are of type ANY, therefore the response size is larger than the query, leading to an amplification effect.
+
+The higher the amplification factor, the higher the impact of this attack.
+
+According to the already cited report, DNS reflection is the most commonly used attack among the dns-based ddos, so we decided to simulate it.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

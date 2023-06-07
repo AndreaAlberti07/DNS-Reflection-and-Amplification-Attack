@@ -1,0 +1,15 @@
+3,UDP Flood attacks
+1,CharGEN Flood
+2,ICMP (Ping) Flood
+1,ICMP Fragmentation Flood
+1,Misused application attack
+1,IP Null attack
+3,TCP Flood attacks
+2,Slowloris
+1,Ping of Death
+1,Smurf attack
+1,Fraggle attack
+2,Low Orbit Ion Cannon (LOIC)
+2,High Orbit Ion Cannon (HOIC)
+1,HTTP Flood attacks
+1,ReDoS
