@@ -15,14 +15,17 @@ and identify potential countermeasures.\\
 \\
 \textbf{Which/Who}\\
 The chosen target for the DDoS attack is a laptop (HP ENVY x360), which acts as a host for a DNS server running BIND9.
-Two laptops, specifically a MacBook Pro 14 and another device (to be specified)!!!!!!!!!!!!!!!!, are utilized as vantage points to initiate the attack.\\
+Four laptops are utilized as vantage points to initiate the attack.\\
 \\
 \textbf{What}\\
-The chosen metrics include measuring the response time for each ICMP or DNS message sent, accounting for potential timeouts.
-Furthermore, the CPU and memory utilization of the DNS server were also monitored during the simulation. \\
+The selected metrics encompass the evaluation of response time for each ICMP or DNS message transmitted, accounting for potential timeouts.
+Additionally, the simulation involved monitoring the CPU and memory utilization of the DNS server.\\
+These measurements were conducted across various types of DNS requests to assess the attack's effectiveness in terms of the amplification factor.
+It's worth noting that the server was configured to hold a distinct number of records for each request type, in order to change the response size accordingly.\\
 \\
 \textbf{Where}\\
-The vantage point is a MacBook Air inside the
-network and passive to the attack.\\
-To ensure the security and stability of public networks and devices,
-the DDoS attack simulations were conducted within a local area network (LAN) environment.
+The vantage point for the simulation was a MacBook Air positioned within the network,
+acting as a passive observer during the attack.\\
+To prioritize the security and stability of both public networks and devices,
+the DDoS attack simulations were carried out within a local area network (LAN) environment.
+This LAN was deliberately isolated from the Internet, preventing any potential impact on external systems.\\
