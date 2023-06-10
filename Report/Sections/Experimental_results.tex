@@ -26,7 +26,28 @@ The latency graph related to DNS queries presented in Figure \ref{fig:Query_MA_A
     \caption{Evolution of the query time over the course of the test with the records of type ANY. The moving average better shows how the latency changes.}
     \label{fig:Query_MA_ANY1}
 \end{figure}
-
+\noindent To gain deeper insights into the impact of the DNS reflection attack, it was essential to explore the actual data and analyze the timings of different types of requests. Figure \ref{fig:Boxplots_Query1} showcases the boxplots of query times, illustrating the system under attack with different record types in comparison to the baseline case. \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Boxplots_Query.png}
+    \caption{Boxplots of the query times with the system under attack with different record types, compared to the baseline case.}
+    \label{fig:Boxplots_Query1}
+\end{figure}
+\noindent By comparing the mean response times during the attack with those observed in the baseline period, we could quantify the magnitude of the latency increase caused by the attack.\\
+The results demonstrated that a larger amplification factor corresponds to higher latency. Even in the case of record type A, which typically has a small amplification factor, a noticeable effect on the query time was observed. Remarkably, records of type MX and NS, despite having similar amplification factors (both around 300), exhibited distinct effects on latency. The mean query time for MX records was found to be approximately 44 ms, while NS records had a mean of 96 ms. This discrepancy can be attributed to the resource allocation or in general to the configuration of the DNS server handling the requests.\\
+Furthermore, certain cases surpassed the threshold of 100 ms, particularly in the case of the RR ANY record. This indicates that such an attack would have a noticeable impact on the targeted system, for example during web browsing activities. Latencies exceeding this threshold can result in perceptible delays and interruptions, potentially compromising the overall user experience.\\
+This analysis provided valuable information on the performance degradation experienced by the targeted system under the influence of the DNS reflection attack.\\
+In addition to analyzing the query times using DNS-related tools, we also conducted a similar analysis using the ping command-line tool. The purpose of this analysis was to assess the impact of the DNS reflection attack on overall system latency, beyond just the DNS requests.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Boxplots_Ping.png}
+    \caption{Boxplots of the ping times with the system under attack with different record types, compared to the baseline case.}
+    \label{fig:Boxplots_Ping1}
+\end{figure}
+Surprisingly, as shown in Figure \ref{fig:Boxplots_Ping1} the results obtained from the ping analysis revealed that the latency did not increase significantly during the attack. The highest mean latency observed was approximately 48 ms for the RR of type ANY. \\
+This finding suggests that the DNS reflection attack primarily affects the DNS requests themselves, rather than causing widespread disruption to the entire system.\\
+During the attacks we also examined the effects of the DNS reflection attack on system resources, specifically RAM and CPU utilization. Our analysis aimed to determine whether the attack had any noticeable impact on these critical resources.\\
+Surprisingly, the results revealed that the attack had no significant impact. The resource usage remained within normal ranges, comparable to the baseline measurements taken during the pre-attack phase.\\
 \noindent \textbf{Server Performance}\\
 Based on the type, victim and server have different performances.\\
 %\begin{figure}[H]
