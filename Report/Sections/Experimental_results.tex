@@ -44,16 +44,30 @@ In addition to analyzing the query times using DNS-related tools, we also conduc
     \caption{Boxplots of the ping times with the system under attack with different record types, compared to the baseline case.}
     \label{fig:Boxplots_Ping1}
 \end{figure}
-Surprisingly, as shown in Figure \ref{fig:Boxplots_Ping1} the results obtained from the ping analysis revealed that the latency did not increase significantly during the attack. The highest mean latency observed was approximately 48 ms for the RR of type ANY. \\
+\noindent As shown in Figure \ref{fig:Boxplots_Ping1} the results obtained from the ping analysis revealed that the latency did not increase significantly during the attack. The highest mean latency observed was approximately 48 ms for the RR of type ANY. \\
 This finding suggests that the DNS reflection attack primarily affects the DNS requests themselves, rather than causing widespread disruption to the entire system.\\
 During the attacks we also examined the effects of the DNS reflection attack on system resources, specifically RAM and CPU utilization. Our analysis aimed to determine whether the attack had any noticeable impact on these critical resources.\\
 Surprisingly, the results revealed that the attack had no significant impact. The resource usage remained within normal ranges, comparable to the baseline measurements taken during the pre-attack phase.\\
 \noindent \textbf{Server Performance}\\
-Based on the type, victim and server have different performances.\\
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=\columnwidth]{Sections/Images/example.png}
-%   \caption{Example image on one column}
-%    \label{fig:example}
-%\end{figure}
-\noindent Text after the image.\\
+The other vantage point of the experiments was the DNS server within the local network. Specifically, the analysis focuses on the CPU and RAM usage to gain insights into the server's behavior during the DNS reflection attacks.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Server_CPU_ANY10.png}
+    \caption{Evolution of the DNS server CPU percent used over the course of the attcak with the records of type ANY. The moving average makes the results more clear.}
+    \label{fig:Server_CPU1}
+\end{figure}
+\noindent Figure \ref{fig:Server_CPU1} presents the CPU usage over time, utilizing a moving average to mitigate the volatility of the measurements. Notably, during the attacks, a slight increase in CPU usage is observed, albeit by a marginal 2 to 4\%. This modest change indicates that the CPU's workload experiences a minimal impact during the DNS reflection attacks. While the increased query traffic imposes additional computational demands, the server's CPU manages to handle the heightened workload without significant strain. \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Boxplots_Server.png}
+    \caption{Boxplots of the CPU usage with the system under attack with different record types, compared to the baseline case.}
+    \label{fig:Boxplots_server}
+\end{figure}
+\noindent Moving on to the RAM usage, the data reveals a periodic pattern, as shown in Figure \ref{fig:Memory_server},suggesting the presence of regular garbage collection or memory cleaning processes occurring at intervals. Despite these oscillations, the overall mean value around which the fluctuations occur remains relatively constant. This indicates that the DNS reflection attacks do not significantly affect the server's RAM usage.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Memory_Server.png}
+    \caption{Memory usage of the server during the attack. An oscillating pattern can be observed.}
+    \label{fig:Memory_server}
+\end{figure}
+\noindent The marginal change in CPU usage, coupled with the stable RAM usage, can be attributed to the server's efficient resource management mechanisms. These mechanisms enable the server to effectively handle the increased query load while ensuring minimal impact on CPU and RAM usage.
