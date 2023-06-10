@@ -48,6 +48,7 @@ In addition to analyzing the query times using DNS-related tools, we also conduc
 This finding suggests that the DNS reflection attack primarily affects the DNS requests themselves, rather than causing widespread disruption to the entire system.\\
 During the attacks we also examined the effects of the DNS reflection attack on system resources, specifically RAM and CPU utilization. Our analysis aimed to determine whether the attack had any noticeable impact on these critical resources.\\
 Surprisingly, the results revealed that the attack had no significant impact. The resource usage remained within normal ranges, comparable to the baseline measurements taken during the pre-attack phase.\\
+\\
 \noindent \textbf{Server Performance}\\
 The other vantage point of the experiments was the DNS server within the local network. Specifically, the analysis focuses on the CPU and RAM usage to gain insights into the server's behavior during the DNS reflection attacks.
 \begin{figure}[H]
@@ -63,11 +64,30 @@ The other vantage point of the experiments was the DNS server within the local n
     \caption{Boxplots of the CPU usage with the system under attack with different record types, compared to the baseline case.}
     \label{fig:Boxplots_server}
 \end{figure}
-\noindent Moving on to the RAM usage, the data reveals a periodic pattern, as shown in Figure \ref{fig:Memory_server},suggesting the presence of regular garbage collection or memory cleaning processes occurring at intervals. Despite these oscillations, the overall mean value around which the fluctuations occur remains relatively constant. This indicates that the DNS reflection attacks do not significantly affect the server's RAM usage.\\
+\noindent Moving on to the RAM usage, the data reveals a periodic pattern, as shown in Figure \ref{fig:Memory_server}, suggesting the presence of regular garbage collection or memory cleaning processes occurring at intervals. Despite these oscillations, the overall mean value around which the fluctuations occur remains relatively constant. This indicates that the DNS reflection attacks do not significantly affect the server's RAM usage.\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=\columnwidth]{Sections/Images/Memory_Server.png}
     \caption{Memory usage of the server during the attack. An oscillating pattern can be observed.}
     \label{fig:Memory_server}
 \end{figure}
-\noindent The marginal change in CPU usage, coupled with the stable RAM usage, can be attributed to the server's efficient resource management mechanisms. These mechanisms enable the server to effectively handle the increased query load while ensuring minimal impact on CPU and RAM usage.
+\noindent The marginal change in CPU usage, coupled with the stable RAM usage, can be attributed to the server's efficient resource management mechanisms. These mechanisms enable the server to effectively handle the increased query load while ensuring minimal impact on CPU and RAM usage.\\
+\\
+\noindent \textbf{Testing a Big Attack}\\
+\noindent In the last test, the focus shifted towards enhancing the potency of the DNS reflection attack. While the previous attacks involved 10,000 packets per second, this more powerful attack reached a traffic 50,000 packets per second, employing the request type "ANY". This intensified attack configuration was aimed to assess the potential for greater disruption and the limits of the network.\\
+During this amplified attack, notable changes in DNS query times were observed. The mean query time reached 174 ms, with occasional spikes of 400 ms. These elevated query times would certainly have a substantial impact on the loading speed of web pages. Interestingly, when considering ping latency, the increase was about the same as when using the lower packet rate. The limited increase in latency can be attributed to the server's inability to keep up with the amplified attack: several packets were ignored and were not sent to the spoofed IP, resulting in partial blocking of the reflection. This server behavior lowered the expected proportional increase in latency, as the server struggled to process the influx of requests.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Query_MA_ANY50.png}
+    \caption{Query time over the course of the test with a packet rate of 50,000 pps with the requests of type ANY.}
+    \label{fig:Query_MA_ANY50}
+\end{figure}
+\noindent Analyzing the server diagnostics, it was found that the RAM usage remained unaffected by the amplified attack, while on the other hand the strain on the CPU was evident. Unlike the 10,000 packet per second cases, where the CPU usage only experienced a marginal increase, the amplified attack caused the CPU usage to rise significantly. The CPU utilization surged from around 4\% of the baseline to a mean of 24.5\%, with occasional peaks exceeding 30\%. This substantial increase in CPU load indicates the server's struggle to handle the intensified query traffic, resulting in a notable impact on its computational resources.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Sections/Images/Server_CPU_ANY50.png}
+    \caption{CPU usage over the course of the test with a packet rate of 50,000 pps.}
+    \label{fig:Server_CPU_ANY50}
+\end{figure}
+\noindent This final test showed how increasing the attack potency does not always yield the desired effectiveness. The network topology, or in this case the behavior of the server, can exhibit unpredictable characteristics. Despite the significant amplification of the attack, the server's partial blocking and compromised response contributed to unexpected outcomes.\\
+\\
