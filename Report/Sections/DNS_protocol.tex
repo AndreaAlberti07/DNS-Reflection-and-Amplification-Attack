@@ -1,0 +1,50 @@
+\section{The DNS protocol}
+The Domain Name System (DNS) protocol is a hierarchical and distributed naming system for computers, services, or any resources connected to the Internet or a private network. It translates domain names, such as example.com, into IP addresses, allowing devices to locate and communicate with each other. DNS operates on a client-server model, with DNS clients sending queries to DNS servers to resolve domain names.
+
+\subsection{Hierarchy}
+The DNS protocol is organized hierarchically, with a global system of interconnected DNS servers. At the top of the hierarchy are the root DNS servers, followed by top-level domain (TLD) servers, and finally authoritative name servers responsible for individual domain zones. This hierarchical structure allows for efficient and scalable domain name resolution.
+
+
+\subsection{Query and Response}
+The DNS protocol uses query and response messages to facilitate domain name resolution. A DNS query is initiated by a resolver and sent to a DNS server. The query message contains the requested domain name and the desired type of information (e.g., IP address, MX record). The DNS server processes the query and generates a response message containing the requested information, which is then returned to the resolver.
+Each message consists of a header and four sections: question, answer, authority, and an additional space. A header field (flags) controls the content of these four sections.
+
+\begin{table}[H]
+    \centering
+    \caption{\textbf{Header flags format}}
+    \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
+    \hline
+    \textbf{Field} & \textbf{Description} & \textbf{Length (bits)}\\ \hline
+    QR & Indicates if the message is a query (0) or a reply (1) & 1   \\ \hline
+    OPCODE & The type can be QUERY (standard query, 0), IQUERY (inverse query, 1), or STATUS (server status request, 2) & 4\\ \hline
+    AA & Authoritative Answer, in a response, indicates if the DNS server is authoritative for the queried hostname & 1\\ \hline
+    TC & TrunCation, indicates that this message was truncated due to excessive length & 1\\ \hline
+    RD & Recursion Desired, indicates if the client means a recursive query & 1\\ \hline
+    RA & Recursion Available, in a response, indicates if the replying DNS server supports recursion & 1\\ \hline
+    Z & Zero, reserved for future use & 3\\ \hline
+    RCODE & Response code, can be NOERROR (0), FORMERR (1, Format error), SERVFAIL (2), NXDOMAIN (3, Nonexistent domain), etc. & 4\\ \hline
+    \end{tabularx}
+    \label{tab:query}
+\end{table}
+
+
+\subsection{Resource Records}
+DNS resource records (RRs) are the building blocks of the DNS protocol. They contain specific information associated with a domain name. Common types of resource records include A records (IPv4 address), AAAA records (IPv6 address), MX records (mail exchange), CNAME records (canonical name), and NS records (name server). Each resource record has a specific format and contains relevant data for the DNS resolution process.
+
+
+\begin{table}[H]
+    \centering
+    \caption{\textbf{Resource Record (RR) fields}}
+    \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
+    \hline
+    \textbf{Field} & \textbf{Description} & \textbf{Length (in bits)}\\ \hline
+    NAME & Name of the node to which this record pertains & Variable   \\ \hline
+    TYPE & Type of RR in numeric form (e.g., 15 for MX RRs) & 16\\ \hline
+    CLASS & Class code & 16\\ \hline
+    TTL & Count of seconds that the RR stays valid (The maximum is $2^{31}-1$, which is approximately 68 years) & 32\\ \hline
+    RDLENGTH & Length of RDATA field (specified in octets) & 16\\ \hline
+    RDATA & Additional RR-specific data & Variable as per RDLENGTH\\ \hline
+    \end{tabularx}
+    \label{tab:resource}
+\end{table}
+
