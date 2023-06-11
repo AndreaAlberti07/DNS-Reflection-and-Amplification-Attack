@@ -1,54 +1,50 @@
-\section{The mDNS protocol}
-The Multicast DNS (mDNS) protocol is a decentralized and self-organizing network service discovery mechanism. It allows devices on a local network to discover and communicate with each other without the need for a centralized DNS server. Unlike traditional DNS, which relies on centralized servers to resolve domain names to IP addresses, mDNS operates within a single local network and enables devices to discover each other's services and addresses.
+\section{The DNS protocol}
+The Domain Name System (DNS) protocol is a hierarchical and distributed naming system for computers, services, or any resources connected to the Internet or a private network. It translates domain names, such as example.com, into IP addresses, allowing devices to locate and communicate with each other. DNS operates on a client-server model, with DNS clients sending queries to DNS servers to resolve domain names.
 
-mDNS utilizes multicast packets to communicate. Multicast is a form of communication where a single packet is sent to multiple recipients simultaneously. In the case of mDNS, devices interested in service discovery listen to a specific multicast address (IPv4: 224.0.0.251, IPv6: FF02::FB) and respond accordingly.
+\subsection{Hierarchy}
+The DNS protocol is organized hierarchically, with a global system of interconnected DNS servers. At the top of the hierarchy are the root DNS servers, followed by top-level domain (TLD) servers, and finally authoritative name servers responsible for individual domain zones. This hierarchical structure allows for efficient and scalable domain name resolution.
 
-\subsection{Packets structure}
-In the mDNS protocol, communication is done using multicast packets. These packets have a specific structure, consisting of header fields and data sections. The header contains information such as the source and destination IP addresses, port numbers, and protocol version. The data sections carry the actual content of the mDNS messages.
-\subsection{Queries}
-mDNS queries are used to discover services and devices on the local network. A query packet is sent to the multicast address, and devices that provide the requested service respond with a unicast packet containing the necessary information. Queries can be specific to a particular service or can be a general request for all available services.
+
+\subsection{Query and Response}
+The DNS protocol uses query and response messages to facilitate domain name resolution. A DNS query is initiated by a resolver and sent to a DNS server. The query message contains the requested domain name and the desired type of information (e.g., IP address, MX record). The DNS server processes the query and generates a response message containing the requested information, which is then returned to the resolver.
+Each message consists of a header and four sections: question, answer, authority, and an additional space. A header field (flags) controls the content of these four sections.
 
 \begin{table}[H]
     \centering
-    \caption{\textbf{mDNS Query section fields}}
+    \caption{\textbf{Header flags format}}
     \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
     \hline
-    \textbf{Field} & \textbf{Description} & \textbf{Length bits}\\ \hline
-    QNAME & Name of the node to which the query pertains & Variable   \\ \hline
-    QTYPE & The type of the query, i.e. the type of RR which should be returned in responses. & 16\\ \hline
-    UNICAST-RESPONSE & Boolean flag indicating whether a unicast-response is desired & 1\\ \hline
-    QCLASS & Class code, 1 a.k.a. "IN" for the Internet and IP networks & 15\\ \hline
+    \textbf{Field} & \textbf{Description} & \textbf{Length (bits)}\\ \hline
+    QR & Indicates if the message is a query (0) or a reply (1) & 1   \\ \hline
+    OPCODE & The type can be QUERY (standard query, 0), IQUERY (inverse query, 1), or STATUS (server status request, 2) & 4\\ \hline
+    AA & Authoritative Answer, in a response, indicates if the DNS server is authoritative for the queried hostname & 1\\ \hline
+    TC & TrunCation, indicates that this message was truncated due to excessive length & 1\\ \hline
+    RD & Recursion Desired, indicates if the client means a recursive query & 1\\ \hline
+    RA & Recursion Available, in a response, indicates if the replying DNS server supports recursion & 1\\ \hline
+    Z & Zero, reserved for future use & 3\\ \hline
+    RCODE & Response code, can be NOERROR (0), FORMERR (1, Format error), SERVFAIL (2), NXDOMAIN (3, Nonexistent domain), etc. & 4\\ \hline
     \end{tabularx}
     \label{tab:query}
 \end{table}
 
 
 \subsection{Resource Records}
-Resource records in mDNS provide information about services, devices, and other network resources. They contain data such as IP addresses, service names, port numbers, and other attributes. Resource records are used in both query and response packets to facilitate service discovery and communication. \\
-There are different types of resource records, including:
-\begin{itemize}
-    \item Address (A) Record: Maps a hostname to an IPv4 address.
-    \item AAAA Record: Maps a hostname to an IPv6 address.
-    \item Service (SRV) Record: Provides information about a particular service, such as the port number and the hostname offering the service.
-    \item Pointer (PTR) Record: Associates a name with a resource record, typically used for service discovery.
-    \item Text (TXT) Record: Carries additional information about a service, such as descriptive text or configuration parameters.
-\end{itemize}
+DNS resource records (RRs) are the building blocks of the DNS protocol. They contain specific information associated with a domain name. Common types of resource records include A records (IPv4 address), AAAA records (IPv6 address), MX records (mail exchange), CNAME records (canonical name), and NS records (name server). Each resource record has a specific format and contains relevant data for the DNS resolution process.
+
 
 \begin{table}[H]
     \centering
-    \caption{\textbf{mDNS Resource Record fields}}
+    \caption{\textbf{Resource Record (RR) fields}}
     \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
     \hline
-    \textbf{Field} & \textbf{Description} & \textbf{Length bits}\\ \hline
-    RRNAME & Name of the node to which the record pertains & Variable   \\ \hline
-    RRTYPE & The type of the Resource Record & 16\\ \hline
-    CACHE-FLUSH & Boolean flag indicating whether outdated cached records should be purged & 1\\ \hline
-    RRCLASS & Class code, 1 a.k.a. "IN" for the Internet and IP networks & 15\\ \hline
-    TTL & Time interval (in seconds) that the RR should be cached & 32\\ \hline
-    RDLENGTH & Integer representing the length (in octets) of the RDATA field & 16\\ \hline
-    RDATA & Resource data; internal structure varies by RRTYPE & Variable\\ \hline
+    \textbf{Field} & \textbf{Description} & \textbf{Length (in bits)}\\ \hline
+    NAME & Name of the node to which this record pertains & Variable   \\ \hline
+    TYPE & Type of RR in numeric form (e.g., 15 for MX RRs) & 16\\ \hline
+    CLASS & Class code & 16\\ \hline
+    TTL & Count of seconds that the RR stays valid (The maximum is $2^{31}-1$, which is approximately 68 years) & 32\\ \hline
+    RDLENGTH & Length of RDATA field (specified in octets) & 16\\ \hline
+    RDATA & Additional RR-specific data & Variable as per RDLENGTH\\ \hline
     \end{tabularx}
     \label{tab:resource}
 \end{table}
-
 
