@@ -10,9 +10,10 @@ The DNS protocol uses query and response messages to facilitate domain name reso
 Each message consists of a header and four sections: question, answer, authority, and an additional space. A header field (flags) controls the content of these four sections.
 
 \begin{table}[H]
+    \small
     \centering
     \caption{\textbf{Header flags format}}
-    \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
+    \begin{tabularx}{\linewidth}{|p{1cm}|p{0.597\linewidth}|p{1cm}|}
     \hline
     \textbf{Field} & \textbf{Description} & \textbf{Length (bits)}\\ \hline
     QR & Indicates if the message is a query (0) or a reply (1) & 1   \\ \hline
@@ -28,23 +29,28 @@ Each message consists of a header and four sections: question, answer, authority
 \end{table}
 
 
+
+
 \subsection{Resource Records}
-DNS resource records (RRs) are the building blocks of the DNS protocol. They contain specific information associated with a domain name. Common types of resource records include A records (IPv4 address), AAAA records (IPv6 address), MX records (mail exchange), CNAME records (canonical name), and NS records (name server). Each resource record has a specific format and contains relevant data for the DNS resolution process.
-
-
 \begin{table}[H]
+    \small
     \centering
     \caption{\textbf{Resource Record (RR) fields}}
-    \begin{tabularx}{\linewidth}{|X|p{0.4\linewidth}|X|}
+    \begin{tabularx}{\linewidth}{|p{1.3cm}|p{0.558\linewidth}|p{1cm}|}
     \hline
-    \textbf{Field} & \textbf{Description} & \textbf{Length (in bits)}\\ \hline
+    \textbf{Field} & \textbf{Description} & \textbf{Length (bits)}\\ \hline
     NAME & Name of the node to which this record pertains & Variable   \\ \hline
     TYPE & Type of RR in numeric form (e.g., 15 for MX RRs) & 16\\ \hline
     CLASS & Class code & 16\\ \hline
     TTL & Count of seconds that the RR stays valid (The maximum is $2^{31}-1$, which is approximately 68 years) & 32\\ \hline
     RDLENGTH & Length of RDATA field (specified in octets) & 16\\ \hline
-    RDATA & Additional RR-specific data & Variable as per RDLENGTH\\ \hline
+    RDATA & Additional RR-specific data & Variable\\ \hline
     \end{tabularx}
     \label{tab:resource}
 \end{table}
+
+DNS resource records (RRs) are the building blocks of the DNS protocol. They contain specific information associated with a domain name. Common types of resource records include A records (IPv4 address), AAAA records (IPv6 address), MX records (mail exchange), CNAME records (canonical name), and NS records (name server). Each resource record has a specific format and contains relevant data for the DNS resolution process.
+
+
+
 
