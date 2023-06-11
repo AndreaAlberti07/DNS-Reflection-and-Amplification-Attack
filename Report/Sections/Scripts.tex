@@ -1,7 +1,20 @@
 \section{Scripts}
 \\
 \textbf{Spoofing}\\
-In order to conduct a Denial of Service (DoS) attack, We utilized a custom script based on the Scapy library. The script performed a ping sweep on a specific network range, allowing me to identify active hosts within the target network. By leveraging the Scapy library's packet crafting capabilities, We sent out ARP request packets with a broadcast destination MAC address to ensure their delivery to all hosts. By analyzing the responses received within a specified timeout period, We extracted the IP addresses of the active hosts. This information enabled me to identify potential targets for subsequent stages of the DoS attack. This technique served as an initial reconnaissance step in the attack, providing valuable insights into the network's composition and active hosts that could be further exploited to disrupt the target's services.
+In order to conduct a Distributed Denial of Service (DDoS) attack, we utilized a custom script based on the \textit{Scapy} library. The script performed a ping sweep on a 
+specific network range, allowing us to identify active hosts within the target network. By leveraging the Scapy library's packet crafting capabilities,
+ARP request packets have been sent out with a broadcast destination MAC address to ensure their delivery to all hosts. By analyzing the responses received 
+within a specified timeout period, the IP addresses of the active hosts have been extracted. This information facilitated the identification of potential targets for 
+subsequent stages of the DDoS attack. This technique served as an initial reconnaissance step in the attack, providing valuable insights into the 
+network's composition and active hosts that could be further exploited to disrupt the target's services.
 \\
 \textbf{Dos Script}\\
-To execute a Denial of Service (DoS) attack, We employed a customized script based on the Scapy and dnspython libraries. The primary objective was to flood a target host with a massive number of DNS query packets. By utilizing the script's command-line arguments, We specified the spoofed IP address that would appear as the source of the attack. This technique aimed to deceive the target and potentially implicate the spoofed IP in the attack. The script allowed me to configure various parameters such as the target DNS server's IP address and port number, the domain name to query, and the DNS flags to manipulate. By manipulating these flags, It is possible to customize the DNS message according to the attack goals. It is also possible to specify the number of threads to utilize, each responsible for generating a specific number of DNS requests. This multi-threaded approach amplified the impact of the attack by concurrently inundating the target with a high volume of DNS queries. The cumulative effect was an overwhelming amount of traffic directed towards the specified spoofed IP, resulting in a disruption of its normal operations and potential denial of service.
+To execute a Distributed Denial of Service (DDoS) attack, a customized script based on the \textit{Scapy} and \textit{dnspython} 
+libraries has been exploited. The primary objective 
+was to flood a target host with a massive number of DNS query packets. By utilizing the script's command-line arguments, the spoofed 
+IP address that would appear as the source of the attack can be specified. This technique aimed to deceive the target and potentially implicate the spoofed IP in 
+the attack. The script allowed to configure various parameters such as the target DNS server's IP address and port number, the domain name to 
+query, and the DNS flags to manipulate. By manipulating these flags, the DNS message may be customized according to the attack goals. Furthermore, 
+it is possible to specify the number of threads to utilize, each responsible for generating a specific number of DNS requests. This multi-threaded approach 
+amplified the impact of the attack by concurrently inundating the target with a high volume of DNS queries. The cumulative effect was an overwhelming 
+amount of traffic directed towards the specified spoofed IP, resulting in a disruption of its normal operations and potential denial of service.
