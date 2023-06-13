@@ -121,26 +121,27 @@ This approach consists in taking a two network, the classifier and another chall
 The idea of caching behavior is to keep providing the cached entry when a relevant server is down, independently on the TTL. That way even during an attack the cached 
 entries can be served, increasing the resilience of the system.
 
-SLIDE 22
+
+SLIDE 25
 To perform our DDOS attack, we created some scripts that implement functions such as multithreading, IP spoofing, and ping sweeping 
 that we will use combined together in order to perform our DDos attack.
-SLIDE 23
+SLIDE 26
 Let's begin by delving into our first script, which revolves around DNS queries. With this custom-built script, 
 we possess the power to construct and send personalized DNS queries, enabling us to navigate the intricate DNS landscape. 
 The script empowers us to tailor the DNS request type, edit the flags, specify a spoofed IP address, 
 and leverage the advantages of multithreading for enhanced efficiency.
-SLIDE 24
+SLIDE 27
 Our DNS script is a remarkable creation, masterfully crafted using the Python programming language. 
 It seamlessly integrates the dnspython library, which enables us to construct and manipulate DNS packets with precision and finesse. 
 Additionally, we leverage the Scapy library to handle the IP headers, allowing us to control and customize every aspect 
 of the DNS packets we generate.
-SLIDE 25
+SLIDE 28
 Multithreading plays a pivotal role in our script, augmenting our offensive capabilities. 
 By harnessing the power of the threading Python library, we have implemented multithreading functionality. 
 Although disabled by default, we possess the flexibility to specify the desired number of threads to be employed in the attack. 
 Furthermore, we have precise control over the total number of DNS requests sent, 
 enabling us to fine-tune our offensive operations for optimal impact.
-SLIDE 26
+SLIDE 29
 Now, let's venture into the fascinating world of IP spoofing. Our exploration of this technique centers around the ping sweeping approach. 
 Through ping sweeping, we engage in the process of identifying active hosts within a specific network range. 
 By crafting and sending Address Resolution Protocol (ARP) request packets to the network, 
