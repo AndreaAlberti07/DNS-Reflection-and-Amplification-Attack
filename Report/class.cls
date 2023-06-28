@@ -89,6 +89,8 @@
 \newcommand{\authornote}[1]{\def\@authornote{#1}}
 \newcommand{\corrauthor}[1]{\def\@corrauthor{#1}}
 \newcommand{\course}[1]{\def\@course{#1}}
+\newcommand{\githubrepo}[1]{\def\@githubrepo{#1}}
+
 
 
 
@@ -112,7 +114,7 @@
     \centering\vskip\baselineskip
     \@author\par
     \vskip\baselineskip
-    {\small{Github repository: \url{https://github.com/DavideLigari01/msdos-attack}}\par}
+    {\small{Github repository: \url{\@githubrepo}}\par}
   \end{minipage}\bigskip\normalfont\normalsize%
 }
 \appto{\maketitle}{%
