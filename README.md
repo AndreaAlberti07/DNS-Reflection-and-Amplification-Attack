@@ -33,7 +33,3 @@ Each folder within the repository has its own specific purpose and contains rele
 
 If you would like to contribute to this project, feel free to submit pull requests or contact the contributors.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code and resources as per the terms of the license.
-
