@@ -27,41 +27,47 @@
 
 \maketitle
 \begin{abstract}
-    Only two levels of sectional headings, \verb|\section| and \verb|\subsection|, should be used. Ad nemo aut quae dolores nesciunt reprehenderit occaecati. Optio distinctio at aliquam odit dolores laudantium. Illum et qui iste et laudantium dolorum. Nihil quis qui at quia alias. Quisquam ea sit aspernatur. Labore at hic voluptas cumque eum officia repellat.
+    prova
+	This report presents the experimental results of a project focused on assessing the impact of a DNS reflection and amplification attack.
+	The study explores different amplification factors based on the DNS request types used and analyzes their effects on the targeted system
+	and the DNS server within a local network environment.
+	The results indicate that higher amplification factors correspond to increased latency during the attack,
+	with some query times exceeding a threshold of 100 ms.
+	However, the attack primarily affects DNS requests rather than causing widespread disruption to the entire system,
+	as demonstrated by the analysis using the ping command-line tool.
+	Surprisingly, the attack has no significant impact on system resources, such as RAM and CPU utilization,
+	suggesting efficient resource management by the targeted server.
+	Additionally, an intensified attack configuration reveals notable changes in query times and increased CPU utilization on the DNS server,
+	indicating its struggle to handle the intensified query traffic.
 
-    \keywords{DNS server • DDoS Attack • Wireshark • Dig • Top • Ping}
+	\keywords{DNS server • DDoS Attack • Wireshark • Dig • Top • Ping}
 \end{abstract}
 \begin{multicols}{2}
-    \cite{dizdar_dns_2021}
-    \cite{dnsbaseddos}
-    \cite{alleviatingimpact}
-    \cite{taylor_four_2021}
-    \cite{DNSattackstype}
-    \cite{DDoSthreatreport}
-    \cite{Devi_2015}
-    \cite{anycast}
-    \cite{machinelearning}
-    \cite{createDNS}
-    %Andrea
-    \input{./Sections/DNS based DDoS attacks.tex}
-    %Karim
-    \input{./Sections/DNS_protocol.tex}
+    \tableofcontents
+	\nocite{dizdar_dns_2021}
+	\nocite{dnsbaseddos}
+	\nocite{taylor_four_2021}
+	\nocite{DNSattackstype}
+	\nocite{Devi_2015}
+    %Davide
+    \input{./Sections/Introduction.tex}
+	%Andrea
+	\input{./Sections/DNS based DDoS attacks.tex}
+	%Karim
+	\input{./Sections/DNS_protocol.tex}
+	%Davide
+	\input{./Sections/Metodologies_and_experimental_setup.tex}
+	\input{./Sections/Tools_used.tex}
+	\input{./Sections/DNS_server.tex}
     %Cristian
-    \input{./Sections/Scripts.tex}
+	\input{./Sections/Scripts.tex}
+	%Matteo
+	\input{./Sections/Experimental_results.tex}
+	%Andrea
+	\input{./Sections/Mitigation measures.tex}
     %Davide
-    \input{./Sections/Metodologies_and_experimental_setup.tex}
-    \input{./Sections/Tools_used.tex}
-    \input{./Sections/DNS_server.tex}
-    %Matteo
-    \input{./Sections/Experimental_results.tex}
-    %Davide
-    \input{./Sections/Mitigation measures.tex}
-
-    \input{./Sections/Conclusions.tex}
-    
-
-    %\input{./Sections/Conclusion.tex}
-    \newpage
-    \printbibliography
+	\input{./Sections/Conclusions.tex}
+    \clearpage
+	\printbibliography
 \end{multicols}
 \end{document}

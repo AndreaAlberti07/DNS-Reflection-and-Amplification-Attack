@@ -75,7 +75,7 @@
 \geometry{paperwidth=8.25in,
   paperheight=11in,
   left=2.1cm,
-  top=1.75cm,
+  top=3cm,
   bottom=2.4cm,
   right=2.1cm,
   footskip=2\baselineskip,
@@ -111,6 +111,8 @@
     {\centering\LARGE\bfseries\@title\par}
     \centering\vskip\baselineskip
     \@author\par
+    \vskip\baselineskip
+    {\small{Github repository: \url{https://github.com/DavideLigari01/msdos-attack}}\par}
   \end{minipage}\bigskip\normalfont\normalsize%
 }
 \appto{\maketitle}{%

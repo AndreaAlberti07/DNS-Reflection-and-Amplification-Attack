@@ -5,25 +5,25 @@ This section aims to provide a detailed explanation of the methodologies utilize
 The selected methodologies encompass a systematic approach that allows for the accurate replication of a
 DDoS attack while maintaining ethical considerations and minimizing the potential impact on live networks.
 These methodologies were carefully chosen to ensure the reliability and validity of the experimental results.
-The methodological approach used is the following:\\
-\\
-\textbf{Why}\\
+The methodological approach used is the following:
+
+\subsubsection*{Why}
 The objective of this study is to assess the impact of a DoS attack, exploiting the DNS protocol and monitor the reachability
 of the targeted device and other network nodes.
 By simulating realistic attack scenarios, this study aims to understand the vulnerabilities within the DNS protocol, evaluate network resilience,
-and identify potential countermeasures.\\
-\\
-\textbf{Which/Who}\\
+and identify potential countermeasures.
+
+\subsubsection*{Which/Who}
 The chosen target for the DDoS attack is a laptop (HP ENVY x360), which acts as a host for a DNS server running BIND9.
-Four laptops are utilized as vantage points to initiate the attack.\\
-\\
-\textbf{What}\\
+Four laptops are utilized as vantage points to initiate the attack.
+
+\subsubsection*{What}
 The selected metrics encompass the evaluation of response time for each ICMP or DNS message transmitted, accounting for potential timeouts.
 Additionally, the simulation involved monitoring the CPU and memory utilization of the DNS server.\\
 These measurements were conducted across various types of DNS requests to assess the attack's effectiveness in terms of the amplification factor.
-It's worth noting that the server was configured to hold a distinct number of records for each request type, in order to change the response size accordingly.\\
-\\
-\textbf{Where}\\
+It's worth noting that the server was configured to hold a distinct number of records for each request type, in order to change the response size accordingly.
+
+\subsubsection*{Where}
 The vantage point for the simulation was a MacBook Air positioned within the network,
 acting as a passive observer during the attack.\\
 To prioritize the security and stability of both public networks and devices,

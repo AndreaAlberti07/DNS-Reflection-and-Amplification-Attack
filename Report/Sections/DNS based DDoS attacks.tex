@@ -4,9 +4,9 @@ Any compromise to the DNS service could have significant consequences, leading t
 While the primary focus of DNS design is to provide fast responses, its emphasis on security is relatively limited, making 
 it susceptible to various forms of attacks. According to a recent report by Cloudflare (\cite{DDoSthreatreport}), almost a third
 of all DDoS attacks are DNS-based. These attacks primarily fall into three categories:
-\textit{DNS query flood}, \textit{TCP flood}, and \textit{DNS reflection and amplification}.\\
-\\
-\textbf{DNS query flood}\\
+\textit{DNS query flood}, \textit{TCP flood}, and \textit{DNS reflection and amplification}.
+
+\subsubsection*{DNS query flood}
 This is a direct attack, conducted with the intention of overwhelming the target DNS server by exhausting its available resources, 
 eventually causing it to become unresponsive. This type of attack involves the attacker leveraging a botnet, a network of 
 compromised devices, to send a massive volume of DNS queries to the target server.
@@ -24,15 +24,15 @@ does not exist, sends an NXDOMAIN response. All of these queries travel to the a
 resources as it is forced handling each request.
 
 The DNS query flood attack is particularly effective against smaller DNS servers that may have limited resources to handle 
-the high volume of queries, making them more vulnerable to disruption.\\
-\\
-\textbf{TCP flood}\\
+the high volume of queries, making them more vulnerable to disruption.
+
+\subsubsection*{TCP flood}
 Another form of attack that aims to exhaust server resources is the TCP flood attack. In this type of attack, the attacker inundates the 
 target server with a large number of TCP connection requests but does not close these connections. As a result, the server is compelled 
 to allocate resources to handle each incoming TCP connection. As the number of connections grows, if the attack is successful the server 
-becomes unresponsive to legitimate users.\\
-\\
-\textbf{DNS reflection and amplification}\\
+becomes unresponsive to legitimate users.
+
+\subsubsection*{DNS reflection and amplification}
 DNS reflection and amplification is an indirect attack strategy that aims to consume the target network's bandwidth. The attack 
 begins with the attacker spoofing the IP address of the target. Subsequently, numerous queries are sent to a DNS server, utilizing the 
 spoofed IP address as the source address. In this scenario, the spoofed IP address receives the responses from the DNS server, which 

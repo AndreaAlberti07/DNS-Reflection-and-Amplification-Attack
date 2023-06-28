@@ -1,11 +1,11 @@
 \section{The DNS protocol}
 The Domain Name System (DNS) protocol is a hierarchical and distributed naming system for computers, services, or any resources connected to the Internet or a private network. It translates domain names, such as example.com, into IP addresses, allowing devices to locate and communicate with each other. DNS operates on a client-server model, with DNS clients sending queries to DNS servers to resolve domain names.
 
-\subsection{Hierarchy}
+\subsection*{Hierarchy}
 The DNS protocol is organized hierarchically, with a global system of interconnected DNS servers. At the top of the hierarchy are the root DNS servers, followed by top-level domain (TLD) servers, and finally authoritative name servers responsible for individual domain zones. This hierarchical structure allows for efficient and scalable domain name resolution.
 
 
-\subsection{Query and Response}
+\subsection*{Query and Response}
 The DNS protocol uses query and response messages to facilitate domain name resolution. A DNS query is initiated by a resolver and sent to a DNS server. The query message contains the requested domain name and the desired type of information (e.g., IP address, MX record). The DNS server processes the query and generates a response message containing the requested information, which is then returned to the resolver.
 Each message consists of a header and four sections: question, answer, authority, and an additional space. A header field (flags) controls the content of these four sections.
 
@@ -31,7 +31,7 @@ Each message consists of a header and four sections: question, answer, authority
 
 
 
-\subsection{Resource Records}
+\subsection*{Resource Records}
 \begin{table}[H]
     \small
     \centering

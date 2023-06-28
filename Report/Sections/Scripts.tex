@@ -1,14 +1,14 @@
 \section{Scripts}
 
-\textbf{Spoofing}\\
+\subsubsection*{Spoofing}
 In order to conduct a Distributed Denial of Service (DDoS) attack, we utilized a custom script based on the \textit{Scapy} library. The script performed a ping sweep on a 
 specific network range, allowing us to identify active hosts within the target network. By leveraging the Scapy library's packet crafting capabilities,
 ARP request packets have been sent out with a broadcast destination MAC address to ensure their delivery to all hosts. By analyzing the responses received 
 within a specified timeout period, the IP addresses of the active hosts have been extracted. This information facilitated the identification of potential targets for 
 subsequent stages of the DDoS attack. This technique served as an initial reconnaissance step in the attack, providing valuable insights into the 
 network's composition and active hosts that could be further exploited to disrupt the target's services.
-\\
-\textbf{Dos Script}\\
+
+\subsubsection*{Dos Script}
 To execute a Distributed Denial of Service (DDoS) attack, a customized script based on the \textit{Scapy} and \textit{dnspython} 
 libraries has been exploited. The primary objective 
 was to flood a target host with a massive number of DNS query packets. By utilizing the script's command-line arguments, the spoofed 
