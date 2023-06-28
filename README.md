@@ -6,6 +6,15 @@ The project investigates the effectiveness of various mitigation measures to pro
 
 The repository provides detailed instructions for configuring the DNS server, relevant research papers, the project report, a presentation, scripts used to perform the attack and collect data, and the collected data itself for further analysis.
 
+## Contributors
+
+- [Ligari Davide](https://github.com/DavideLigari01)
+- [Andreoli Cristian](https://github.com/AndreoliCristian)
+- [Alberti Andrea](https://github.com/AndreaAlberti07)
+- [Intini Karim](https://github.com/IntiniKarim)
+- [Scardovi Matteo](https://github.com/TeoScardov)
+
+
 
 ## Folder Structure
 
@@ -26,15 +35,6 @@ The repository is organized into the following folders:
 ## Usage
 
 Each folder within the repository has its own specific purpose and contains relevant files. To access the desired information or resources, navigate to the respective folder and refer to the provided documentation.
-
-## Contributors
-
-- [Ligari Davide](https://github.com/DavideLigari01)
-- [Andreoli Cristian](https://github.com/AndreoliCristian)
-- [Alberti Andrea](https://github.com/AndreaAlberti07)
-- [Intini Karim](https://github.com/IntiniKarim)
-- [Scardovi Matteo](https://github.com/TeoScardov)
-
 
 If you would like to contribute to this project, feel free to submit pull requests or contact the contributors.
 
