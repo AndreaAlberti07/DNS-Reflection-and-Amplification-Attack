@@ -1,6 +1,11 @@
 # DNS Amplification Attack 
 
-This repository contains the code, configuration files, research papers, and reports related to the DNS Amplification Attack project.
+The DNS Amplification Attack project aims to study and analyze the security implications of DNS amplification attacks. DNS amplification attacks exploit the inherent characteristics of the DNS protocol to overwhelm target servers with a large volume of traffic, causing disruptions in service availability. 
+
+The project investigates the effectiveness of various mitigation measures to protect against DNS amplification attacks. It explores proactive measures such as rate limiting and trusted sources, detection techniques such as routing hops detection and machine learning, and resilience measures such as anycast schemes and caching behavior modifications. 
+
+The repository provides detailed instructions for configuring the DNS server, relevant research papers, the project report, a presentation, scripts used to perform the attack and collect data, and the collected data itself for further analysis.
+
 
 ## Folder Structure
 
