@@ -36,7 +36,5 @@ The repository is organized into the following folders:
 
 Each folder within the repository has its own specific purpose and contains relevant files. To access the desired information or resources, navigate to the respective folder and refer to the provided documentation.
 
-If you would like to contribute to this project, feel free to submit pull requests or contact the contributors.
-
 ### Thank you for your interest in this project!
 
