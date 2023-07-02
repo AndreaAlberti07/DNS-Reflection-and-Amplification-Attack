@@ -1,4 +1,19 @@
-# DNS Amplification Attack 
+<h1 align="center">DNS Amplification Attack </h1>
+
+<p align="center">
+  <b>Simulation of a DNS Reflection and Amplification DDoS attack</b>
+</p>
+
+<p align="center">
+  <a href="#about">About</a> •
+  <a href="#contributors">Contributors</a> •
+  <a href="#folder_structure">Folder_Structure</a> •
+  <a href="#usage">Usage</a>
+</p>
+
+---
+
+## About 
 
 The DNS Amplification Attack project aims to study and analyze the security implications of DNS amplification attacks. DNS amplification attacks exploit the inherent characteristics of the DNS protocol to overwhelm target servers with a large volume of traffic, causing disruptions in service availability. 
 
@@ -15,8 +30,7 @@ The repository provides detailed instructions for configuring the DNS server, re
 - [Scardovi Matteo](https://github.com/TeoScardov)
 
 
-
-## Folder Structure
+## Folder_Structure
 
 The repository is organized into the following folders:
 
