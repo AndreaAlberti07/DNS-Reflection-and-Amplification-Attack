@@ -1,11 +1,9 @@
 \section{DNS Server}
 For the simulation of the DDoS attack, a dedicated DNS server was established on a laptop using Ubuntu 24.04 LTS operating system.
-The laptop is an HP ENVY x360, with 12 GB of RAM and 4 core\\
+The laptop is an HP ENVY x360, with 12 GB of RAM and 4 core.\\
 To create the DNS server, the open-source software BIND9 was employed. This widely adopted DNS server software offers robust functionality and configurability.
-The server was specifically configured to act as the authoritative server for the domain name "ediproject.com."
+The server was specifically configured to act as the authoritative server for the domain name \textit{ediproject.com.}
 By assuming authority over this domain, the DNS server can respond to DNS queries and provide legitimate DNS responses during the simulation.\\
 To ease the attack simulation, the DNS server was configured to respond to all DNS queries with the same LAN, and no security measures were implemented.
-To mimic the characteristics of a genuine DNS server, a total of seven NS records and five MX-type records were meticulously added to the DNS server's configuration.
-The inclusion of these records introduces diverse amplification factors, enabling the analysis of the DDoS attack's effectiveness based on these factors.
-By incorporating varying NS and MX records, the simulation can reflect the behavior of a real DNS server and offer insights into the impact of
-different amplification configurations on the severity of the attack.\\
+To mimic the characteristics of a genuine DNS server, a total of seven NS records, five MX-type records and ten A-type records were added to the DNS server's configuration.
+The inclusion of these records introduces diverse amplification factors for different type of records, enabling the analysis of the DDoS attack's effectiveness based on these factors.
